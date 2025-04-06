@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-color);
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo a {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navLinks a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+  }
+  
+  .rightSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .search {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+  }
+  
+  .profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
