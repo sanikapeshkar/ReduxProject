@@ -10,7 +10,7 @@ export default function HomePage() {
         <h1>Welcome to JIRA Clone</h1>
         <p>Track and manage your tasks efficiently.</p>
         <div className={styles.actions}>
-          <Link href="/issues/new">
+          <Link href="/issues/add">
             <button className={styles.primaryBtn}>Create New Issue</button>
           </Link>
           <Link href="/projects">

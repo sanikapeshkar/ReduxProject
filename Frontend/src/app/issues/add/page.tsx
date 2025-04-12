@@ -5,7 +5,7 @@ import Input from "../../../components/Input/Input";
 import Modal from "../../../components/Modal/Modal";
 import Button from "../../../components/Button/Button";
 import { CreateIssueFormProps } from "./createIssue.types";
-
+import Link from "next/link";
 
 const CreateIssueForm: React.FC<CreateIssueFormProps> = ({
   onClose,
@@ -72,9 +72,11 @@ const CreateIssueForm: React.FC<CreateIssueFormProps> = ({
 
         <div className={styles.actions}>
           <Button type="submit">Create</Button>
-          <Button type="button" onClick={onClose}>
-            Cancel
-          </Button>
+          <Link href="/issues">
+            <Button type="button" onClick={() => setopenModal(false)}>
+              Cancel
+            </Button>
+          </Link>
         </div>
       </form>
     </Modal>
