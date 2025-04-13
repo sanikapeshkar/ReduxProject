@@ -5,6 +5,7 @@ import { ButtonProps } from './Button.types'
 
 function Button({
   children,
+  type,
   variant = 'primary',
   size = 'medium',
   onClick,
