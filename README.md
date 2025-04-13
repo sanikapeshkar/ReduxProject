@@ -1,1 +1,2 @@
-# ReduxProject
+# JIRA Clone Project
+
