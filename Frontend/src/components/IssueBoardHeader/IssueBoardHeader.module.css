@@ -1,0 +1,7 @@
+.boardHeader{
+    display: flex;
+    .column{
+       flex: 1;
+       background-color: gray;
+    }
+}

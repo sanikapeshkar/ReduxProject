@@ -5,7 +5,7 @@ export interface IssueCardProps {
     points: number;
     prLink?: string;
     priority: 'Low' | 'Medium' | 'High';
-    assignee: {
+    assignee?: {
       name: string;
       avatarUrl: string;
     };
