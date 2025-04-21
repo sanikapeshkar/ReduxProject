@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar/Navbar";
+import { Montserrat } from 'next/font/google';
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+// Initialize the font
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'], 
+});
 
 export const metadata: Metadata = {
   title: "JIRA Clone",
@@ -25,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={montserrat.className}>
         <Navbar />
         {children}
       </body>

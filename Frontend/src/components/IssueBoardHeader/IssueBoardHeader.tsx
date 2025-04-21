@@ -1,21 +1,25 @@
 import React from "react";
 import styles from "./IssueBoardHeader.module.css";
+
 const columnNames = [
   "Todo",
-  "InProgress",
-  "CodeReview",
+  "In Progress",
+  "Code Review",
   "Dev Complete",
   "Done",
 ];
+
 function IssueBoardHeader() {
   return (
-    <div className={styles.boardHeader}>
-      {columnNames.map((column) => (
-        <div className={styles.column}>
-            <h2>{column}</h2>
-        </div>
-      ))}
-    </div>
+    <thead className={styles.boardHeader}>
+      <tr className={styles.columnRow}>
+        {columnNames.map((column) => (
+          <th key={column} className={styles.column} >
+            {column}
+          </th>
+        ))}
+      </tr>
+    </thead>
   );
 }
 
