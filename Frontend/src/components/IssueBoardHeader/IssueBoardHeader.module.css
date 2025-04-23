@@ -1,0 +1,14 @@
+.boardHeader {
+  .columnRow {
+    .column {
+      flex: 1;
+      background-color: rgb(209, 209, 209);
+      padding: 0.5rem;
+      th {
+        font-size: small;
+        font-weight: 400;
+        color: rgb(46, 45, 45);
+      }
+    }
+  }
+}
