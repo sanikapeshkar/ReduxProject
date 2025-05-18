@@ -16,9 +16,10 @@ function IssueCard({
   prLink,
   priority,
   assignee,
+  onClick
 }: IssueCardProps) {
   return (
-    <div className={styles.issueCard}>
+    <div className={styles.issueCard} onClick={onClick}>
       <div className={styles.description}>{description}</div>
 
       <div className={styles.ticketDetails}>

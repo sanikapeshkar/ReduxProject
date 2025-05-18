@@ -12,7 +12,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       <div className={styles.modal}>
         <div className={styles.header}>
           {title && <h2 className={styles.title}>{title}</h2>}
-          <Button className={styles.closeButton} onClick={onClose}>
+          <Button type="button" className={styles.closeButton} onClick={onClose}>
             &times;
           </Button>
         </div>
