@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styles from "./IssueModal.module.css";
 import CommentsTextEditor from "../CommentsTextEditor/CommentsTextEditor";
 function IssueModal({ issue }: any) {
-    const [comment, setComment] = useState('<p>Add your comment...</p>');
+  const [comment, setComment] = useState("<p>Add your comment...</p>");
   return (
     <div className={styles.modalContent}>
-      <h2>{issue?.title}</h2>
+      <h2 className={styles.issueTitle}>{issue?.title}</h2>
       <p>
         <strong>Description:</strong> {issue?.description}
       </p>
@@ -19,7 +19,6 @@ function IssueModal({ issue }: any) {
         <strong>Created on:</strong>{" "}
         {new Date(issue?.createdAt).toLocaleDateString()}
       </p>
-      <hr />
 
       <div>
         <h3>Comments</h3>
