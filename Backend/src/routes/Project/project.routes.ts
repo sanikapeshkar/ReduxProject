@@ -1,21 +1,39 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import { Project } from "../../models/Project/project.model";
 import { User } from "../../models/User/user.model";
 import { Issue } from "../../models/Issue/issue.model";
 
-const router = express();
+const router = express.Router();
 
-router.get("/project", (req, res) => {
-  try {
-    res.status(200).json(Project.find());
-  } catch (error) {
-    res.status(500).json({ error: error });
+// GET all projects
+router.get(
+  "/project",
+  async (req: Request, res: Response): Promise<any> => {
+    try {
+      const projects = await Project.find();
+      return res.status(200).json(projects);
+    } catch (error:any) {
+      return res.status(500).json({ error: error.message });
+    }
   }
-});
+);
 
-router.post("/project/:userId",  (req, res) => {
- 
-});
+// POST a new project for a specific user
+router.post(
+  "/project/:userId",
+  async (req, res): Promise<any> => {
+    const userId = req.params.userId;
+    const projectData = req.body;
 
-export default router ;
+    try {
+      const newProject = new Project({ ...projectData, userId });
+      await newProject.save();
+      return res.status(201).json(newProject);
+    } catch (error:any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+export default router;

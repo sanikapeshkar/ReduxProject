@@ -1,42 +1,48 @@
-import express from "express";
+import express, { Request, Response } from "express";
+import mongoose from "mongoose";
 import { Issue } from "../../models/Issue/issue.model";
-import mongoose from 'mongoose'
+
 const router = express.Router();
 
-
-//GET /issues?projectId=665e3e7f8f3a0b001cfdd988
-router.get("/issues", async (req, res) => {
+// GET /issues?projectId=...
+router.get("/issues", async (req: Request, res: Response): Promise<any> => {
   try {
     const { projectId } = req.query;
+
     const filter = projectId ? { projectId } : {};
-    const issues = Issue.find(filter).sort({ createdAt: -1 });
-    res.send(200).json(issues);
-  } catch (error:any) {
-    res.status(500).json({ error: error.message });
+    const issues = await Issue.find(filter).sort({ createdAt: -1 }); 
+
+    return res.status(200).json(issues);
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message });
   }
 });
 
-// Create Issue by projectId
-router.post("/issue/create/:projectId", async (req, res) => {
-try{
-const { title, description, assignee, comments, status } = req.body;
-const {projectId} = req.params ;
-const objectId = new mongoose.Types.ObjectId(projectId);
+// POST /issue/create/:projectId
+router.post("/issue/create/:projectId", async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { title, description, assignee, comments, status } = req.body;
+    const { projectId } = req.params;
 
-const issue = new Issue({
-  title,
-  description,
-  status : status || 'Open',
-  assignee,
-  comments: comments || [],
-  projectId : objectId 
-})
-await issue.save()
-res.status(200).json(issue);
-}
-catch(error){
- res.status(500).json({error:error})
-}
+    if (!mongoose.isValidObjectId(projectId)) {
+      return res.status(400).json({ error: "Invalid projectId" });
+    }
+
+    const issue = new Issue({
+      title,
+      description,
+      status: status || "Open",
+      assignee,
+      comments: comments || [],
+      projectId: new mongoose.Types.ObjectId(projectId),
+    });
+
+    await issue.save();
+
+    return res.status(201).json(issue);
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message });
+  }
 });
 
 export default router;
