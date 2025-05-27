@@ -1,24 +1,11 @@
-import mongoose, { Document, Schema, Types } from 'mongoose';
-import { Attachment, AttachmentModel } from '../Attachments/attachments';
+import mongoose, { Document, Mongoose, Schema, Types } from 'mongoose';
+import { Attachment } from '../Attachments/attachments.model';
+import { IssueDocument } from './issue.types';
 
 interface Comment {
   author: string;
   text: string;
   date?: Date;
-}
-
-export interface IssueDocument extends Document {
-  title: string;
-  description?: string;
-  status: 'Open' | 'In Progress' | 'Closed';
-  assignee?: {
-    id: string;
-    name: string;
-  };
-  createdAt?: Date;
-  attachments?: Attachment[]; 
-  comments: Comment[];
-  projectId: Types.ObjectId;;
 }
 
 const CommentSchema = new Schema<Comment>({
@@ -40,8 +27,15 @@ const IssueSchema = new Schema<IssueDocument>(
       id: String,
       name: String,
     },
+    createdBy : {
+      type : mongoose.Schema.Types.ObjectId,
+      ref : "User"
+    }, 
     createdAt: { type: Date, default: Date.now },
-    attachments: [AttachmentModel], // ✅ fix usage
+    attachments: [{
+      type : mongoose.Schema.Types.ObjectId,
+      ref:"AttchementSchema"
+    }], 
     comments: [CommentSchema],
     projectId: {
       type: mongoose.Schema.Types.ObjectId,

@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
+import issueRoutes from './routes/Issue/issue.routes';
+import projectRoutes from './routes/Project/project.routes'
 dotenv.config();
 
 const app = express();
@@ -21,4 +22,6 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+app.use('/api', issueRoutes)
+app.use('/api', projectRoutes)
 export default app;
