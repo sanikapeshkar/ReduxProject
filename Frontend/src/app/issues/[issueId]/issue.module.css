@@ -1,0 +1,91 @@
+.issuePage {
+  max-width: 900px;
+  margin: 2rem 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.issueContent {
+  display: flex;
+  gap: 2rem;
+}
+
+.issueLeftSection {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.issueRightSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.editableText {
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.editableText:hover {
+  background-color: #f0f0f0;
+  border-color: #ddd;
+}
+
+.avatarName {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarSmall {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown {
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+  position: relative;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background-color: #eee;
+}
+
