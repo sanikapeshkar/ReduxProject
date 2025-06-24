@@ -1,5 +1,6 @@
 import React from "react";
 import { TableHead, TableHeader, TableRow } from "../ui/table";
+import { IssueBoardCategoryBarTypes } from "./IssueBoardCategoryBar.types";
 
 const IssueBoardCategoryBar = ({columns}:IssueBoardCategoryBarTypes) => {
   return (

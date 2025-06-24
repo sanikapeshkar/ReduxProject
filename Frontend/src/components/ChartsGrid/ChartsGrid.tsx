@@ -12,13 +12,13 @@ import {
   ChartLegendContent,
 } from "@/components/ui/chart"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { ChartConfig, ProjectMetrics } from "../Dashboard/data"
 
 
 
-export function ChartsGrid({ project, chartConfig }: { project: any, chartConfig: any }) {
+export function ChartsGrid({ project, chartConfig }: { project: ProjectMetrics, chartConfig: ChartConfig }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Monthly Trend */}
       <Card>
         <CardHeader>
           <CardTitle>Monthly Trend</CardTitle>

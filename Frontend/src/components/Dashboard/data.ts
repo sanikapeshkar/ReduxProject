@@ -1,3 +1,49 @@
+// types/projectTypes.ts
+
+export type MonthlyDataPoint = {
+  month: string
+  created: number
+  solved: number
+  pending: number
+}
+
+export type WeeklyTrendPoint = {
+  week: string
+  created: number
+  solved: number
+}
+
+export type StatusDistributionItem = {
+  name: string
+  value: number
+  color: string
+}
+
+export type PriorityBreakdownItem = {
+  priority: string
+  created: number
+  solved: number
+}
+
+export type ProjectMetrics = {
+  name: string
+  description: string
+  totalIssues: number
+  solvedIssues: number
+  createdThisMonth: number
+  solvedThisMonth: number
+  monthlyData: MonthlyDataPoint[]
+  weeklyTrend: WeeklyTrendPoint[]
+  statusDistribution: StatusDistributionItem[]
+  priorityBreakdown: PriorityBreakdownItem[]
+}
+
+export type ChartConfig = {
+  [key: string]: {
+    label: string
+    color: string
+  }
+}
 
 export const projectData = {
   "project-1": {
