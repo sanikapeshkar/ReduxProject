@@ -1,10 +1,7 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import IssueBoard from "@/components/IssueBoard/IssueBoard";
 
 export default function Home() {
   return (
-    <div>
-    
-    </div>
+      <></>
   );
 }
