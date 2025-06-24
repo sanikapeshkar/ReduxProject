@@ -5,7 +5,6 @@ import { IssueColumnProps } from "./issueColumn.types";
 export function IssueColumn({
   title,
   color,
-  status,
   issues,
   moveIssue,
   statuses,
