@@ -1,12 +1,8 @@
-import IssueBoard from '@/components/IssueBoard/IssueBoard'
-import IssueCard from '@/components/IssueCard/issue-card'
-import React from 'react'
+import IssueBoard from "@/components/IssueBoard/IssueBoard";
+import React from "react";
 
 const BoardPage = () => {
-  return (
-    <div><IssueBoard/>
-    </div>
-  )
-}
+  return <IssueBoard />;
+};
 
-export default BoardPage
+export default BoardPage;
