@@ -1,6 +1,6 @@
 
 import { ArrowUp, ArrowDown, Minus, CheckSquare, Bug, AlertCircle } from "lucide-react"
-import { Issue, IssueCardProps } from "./issuecard.types"
+import { IssueCardProps } from "./issuecard.types"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Card, CardContent } from "../ui/card"
 import { Badge } from "../ui/badge"
