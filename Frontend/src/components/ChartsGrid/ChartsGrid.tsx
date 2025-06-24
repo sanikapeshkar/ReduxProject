@@ -12,7 +12,7 @@ import {
   ChartLegendContent,
 } from "@/components/ui/chart"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { ChartConfig, ProjectMetrics } from "../Dashboard/data"
+import { ChartConfig, ProjectMetrics, StatusDistributionItem } from "../Dashboard/data"
 
 
 
@@ -70,7 +70,7 @@ export function ChartsGrid({ project, chartConfig }: { project: ProjectMetrics, 
           <ChartContainer config={chartConfig} className="h-[300px]">
             <PieChart>
               <Pie data={project.statusDistribution} cx="50%" cy="50%" innerRadius={60} outerRadius={100} paddingAngle={5} dataKey="value">
-                {project.statusDistribution.map((entry: any, index: number) => (
+                {project.statusDistribution.map((entry: StatusDistributionItem, index: number) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
