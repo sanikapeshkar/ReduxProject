@@ -24,6 +24,11 @@ const Navbar = () => {
             <NavigationMenuTrigger>
               <Link href="/">Projects</Link>
             </NavigationMenuTrigger>
+               <NavigationMenuItem>
+            <NavigationMenuTrigger>
+              <Link href="/">Boards</Link>
+            </NavigationMenuTrigger>
+          </NavigationMenuItem>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink>About</NavigationMenuLink>

@@ -2,7 +2,7 @@
 "use client"
 
 import { useState } from "react"
-import { projectData, chartConfig } from "./data"
+import { projectData } from "./data"
 import { ProjectHeader } from "../ProjectHeader/projectHeader";
 import { ProjectSummary } from "../ProjectSummary/ProjectSummary";
 import { MetricCards } from "../MetricCards/MetricCards";
@@ -40,7 +40,6 @@ export const DashboardHome=()=> {
 
         <ChartsGrid
           project={currentProject}
-          chartConfig={chartConfig}
         />
 
         <ActionButtons />

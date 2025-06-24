@@ -1,4 +1,3 @@
-// types/projectTypes.ts
 
 export type MonthlyDataPoint = {
   month: string
