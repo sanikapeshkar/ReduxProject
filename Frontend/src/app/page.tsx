@@ -1,7 +1,7 @@
-import IssueBoard from "@/components/IssueBoard/IssueBoard";
+import { DashboardHome } from "@/components/Dashboard/Dashboard";
 
 export default function Home() {
   return (
-      <></>
+      <DashboardHome />
   );
 }
