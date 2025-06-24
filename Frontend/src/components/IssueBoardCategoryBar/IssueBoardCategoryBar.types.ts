@@ -1,4 +1,4 @@
-interface IssueBoardCategoryBarTypes {
+export interface IssueBoardCategoryBarTypes {
   columns: IssueBoardColumn[];
 }
 
