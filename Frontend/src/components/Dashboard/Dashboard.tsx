@@ -40,7 +40,6 @@ export const DashboardHome=()=> {
 
         <ChartsGrid
           project={currentProject}
-          chartConfig={chartConfig}
         />
 
         <ActionButtons />
