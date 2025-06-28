@@ -10,7 +10,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -72,7 +71,6 @@ export default function CreateIssue() {
     setOpen(false)
   }
 
-  const selectedPriority = priorityOptions.find((p) => p.value === priority)
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">

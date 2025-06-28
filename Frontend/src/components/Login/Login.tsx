@@ -7,11 +7,10 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Separator } from "../ui/separator";
 
 export default function LoginForm({
@@ -100,7 +99,7 @@ export default function LoginForm({
 
             <div className="text-center text-sm">
               <span className="text-muted-foreground">
-                Don't have an account?{" "}
+                Don&apost; have an account?{" "}
               </span>
               <Button variant="link" className="p-0 h-auto font-semibold">
                 Sign up
