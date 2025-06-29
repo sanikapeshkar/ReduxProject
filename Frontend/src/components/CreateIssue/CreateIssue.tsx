@@ -67,7 +67,6 @@ export default function CreateIssue() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Issue created!")
     setOpen(false)
   }
 
