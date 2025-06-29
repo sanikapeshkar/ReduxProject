@@ -8,8 +8,8 @@ const IssueSchema = new Schema({
   },
 
   projectId: {
-    type: string,
-    ref: Project,
+    type: String,
+    ref: "Project",
   },
   type: {
     type: String,

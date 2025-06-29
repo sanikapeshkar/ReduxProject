@@ -21,13 +21,18 @@ const projectSchema = new Schema(
       default: "",
     },
     projectLead: {
-      type: String, 
+      type: String,
     },
     teamMembers: [
       {
-        type: String, 
+        type: String,
       },
     ],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", 
+      required: true,
+    },
     type: {
       type: String,
       enum: ["software", "business", "marketing", "devops"],
@@ -46,7 +51,7 @@ const projectSchema = new Schema(
       default: Date.now,
     },
   },
-  { timestamps: true } 
+  { timestamps: true }
 );
 
 const Project = models.Project || model("Project", projectSchema);
