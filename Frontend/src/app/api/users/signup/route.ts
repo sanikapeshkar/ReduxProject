@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { email, username, password } = reqBody;
 
-    //validation
     const user = await User.findOne({ email });
 
     if (user) {
@@ -39,7 +38,7 @@ export async function POST(request: NextRequest) {
       success: true,
       savedUser,
     });
-  } catch (err:any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err) {
+     return err instanceof Error ? NextResponse.json({ error: err.message }, { status: 500 }): "";
   }
 }

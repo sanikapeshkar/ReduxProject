@@ -37,7 +37,7 @@ export async function POST(
       message: "Issue created successfully",
       issue: savedIssue,
     });
-  } catch (error:any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+      return error instanceof Error ? NextResponse.json({ error: error.message }, { status: 500 }): "";
   }
 }

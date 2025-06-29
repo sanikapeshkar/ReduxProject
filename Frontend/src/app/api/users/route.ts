@@ -10,7 +10,7 @@ export async function GET() {
   try {
     const users = await User.find().select("-password -verifyToken -verifyTokenExpiry"); 
     return NextResponse.json({ users });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error) {
+     return error instanceof Error ? NextResponse.json({ error: error.message }, { status: 500 }): "";
   }
 }
