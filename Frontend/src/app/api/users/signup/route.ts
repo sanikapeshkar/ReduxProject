@@ -2,7 +2,6 @@ import { connect } from "@/dbconfig/dbconfig";
 import User from "@/model/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { sendEmail } from "@/helpers/mailer";
 
 connect();
 
@@ -28,7 +27,6 @@ export async function POST(request: NextRequest) {
       password: hashedPassword,
     });
 
-    console.log(newUser);
     const savedUser = await newUser.save();
 
     //send verification email
