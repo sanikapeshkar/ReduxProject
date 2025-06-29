@@ -6,6 +6,11 @@ const IssueSchema = new Schema({
     required: true,
     trim: true,
   },
+
+  projectId: {
+    type: string,
+    ref: Project,
+  },
   type: {
     type: String,
     enum: ["bug", "feature", "improvement", "task", "documentation"],
@@ -17,7 +22,7 @@ const IssueSchema = new Schema({
     default: "medium",
   },
   assignee: {
-    type: String, // You can change this to ObjectId if you have User refs
+    type: String,
     default: null,
   },
   dueDate: {
