@@ -1,5 +1,6 @@
 import { Issue, Status } from "../IssueCard/issuecard.types"
 export interface IssueColumnProps {
+  key : string
   title: string
   color: string
   status: Status

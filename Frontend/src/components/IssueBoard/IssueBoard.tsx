@@ -1,47 +1,52 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Plus, Filter } from "lucide-react"
+import { useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Search, Plus, Filter } from "lucide-react";
+import { Status } from "../IssueCard/issuecard.types";
+import { AssigneeFilter } from "../AssigneeFilter/AssigneeFilter";
+import { Input } from "../ui/input";
+import { IssueColumn } from "../IssueColumn/issue-column";
 
-import { mockIssues, statusColumns } from "./IssueData"
-import { Assignee } from "../AssigneeFilter/Assigneefilter.types"
-import { Issue, Status } from "../IssueCard/issuecard.types"
-import { AssigneeFilter } from "../AssigneeFilter/AssigneeFilter"
-import { Input } from "../ui/input"
-import { IssueColumn } from "../IssueColumn/issue-column"
+export default function IssueBoard({
+  groupedIssues,
+  projectAssignees,
+}: {
+  groupedIssues: any[];
+  projectAssignees: any[];
+}) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedAssignees, setSelectedAssignees] = useState<string[]>([]);
 
+  const allIssues = useMemo(() => {
+    return groupedIssues
+      .filter((group) => group?.issues?.length > 0)
+      .flatMap((group) => group.issues.filter(Boolean));
+  }, [groupedIssues]);
 
-export default function IssueBoard() {
-  const [issues, setIssues] = useState<Issue[]>(mockIssues)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedAssignees, setSelectedAssignees] = useState<string[]>([])
+  const filteredIssues = allIssues.filter((issue: any) => {
+    if (!issue || !issue.title || !issue._id) return false;
 
-  const uniqueAssignees: Assignee[] = Array.from(
-    new Set(issues.map((issue) => issue.assignee.name))
-  ).map((name) => {
-    const assignee = issues.find((issue) => issue.assignee.name === name)?.assignee
-    return assignee!
-  })
-
-  const filteredIssues = issues.filter((issue) => {
     const matchesSearch =
       issue.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      issue.id.toLowerCase().includes(searchTerm.toLowerCase())
+      issue._id.toLowerCase().includes(searchTerm.toLowerCase());
+
     const matchesAssignee =
-      selectedAssignees.length === 0 || selectedAssignees.includes(issue.assignee.name)
-    return matchesSearch && matchesAssignee
-  })
+      selectedAssignees.length === 0 ||
+      selectedAssignees.includes(issue.assignee);
+
+    return matchesSearch && matchesAssignee;
+  });
 
   const getIssuesByStatus = (status: Status) =>
-    filteredIssues.filter((issue) => issue.status === status)
-
-  const moveIssue = (id: string, newStatus: Status) => {
-    setIssues((prev) =>
-      prev.map((issue) => (issue.id === id ? { ...issue, status: newStatus } : issue))
-    )
-  }
+    groupedIssues.map((issue) => (issue.status === status ? issue : undefined));
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -49,7 +54,7 @@ export default function IssueBoard() {
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Project Board</h1>
 
         <AssigneeFilter
-          assignees={uniqueAssignees}
+          assignees={projectAssignees}
           selected={selectedAssignees}
           onChange={setSelectedAssignees}
         />
@@ -84,19 +89,21 @@ export default function IssueBoard() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {statusColumns.map((column) => (
-            <IssueColumn
-              key={column.id}
-              title={column.title}
-              status={column.id}
-              color={column.color}
-              issues={getIssuesByStatus(column.id)}
-              moveIssue={moveIssue}
-              statuses={statusColumns}
-            />
-          ))}
+          {["open", "in progress", "done", "closed", "backlog"].map(
+            (status) => (
+              <IssueColumn
+                key={status}
+                title={status.toUpperCase()}
+                status={status as Status}
+                color="blue"
+                issues={getIssuesByStatus(status as Status)}
+                moveIssue={() => {}}
+                statuses={[]}
+              />
+            )
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }

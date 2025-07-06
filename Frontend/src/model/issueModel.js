@@ -1,4 +1,5 @@
 import mongoose, { Schema, model, models } from "mongoose";
+import User from "./userModel";
 
 const IssueSchema = new Schema({
   title: {
@@ -15,10 +16,6 @@ const IssueSchema = new Schema({
     type: String,
     enum: ["low", "medium", "high", "urgent"],
     default: "medium",
-  },
-  assignee: {
-    type: String, // You can change this to ObjectId if you have User refs
-    default: null,
   },
   dueDate: {
     type: Date,
@@ -43,7 +40,7 @@ const IssueSchema = new Schema({
   },
   assignee: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "users",
     default: null,
   },
   updatedAt: {

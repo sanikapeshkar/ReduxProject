@@ -6,7 +6,7 @@ export interface AssigneeFilterProps {
 }
 
 export interface Assignee {
-  name: string
+  username: string
   avatar: string
   initials: string
 }

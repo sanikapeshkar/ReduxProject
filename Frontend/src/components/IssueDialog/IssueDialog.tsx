@@ -27,11 +27,10 @@ export function IssueDialog({ issue, moveIssue, statuses }: IssueDialogProps) {
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>
-            {issue.id}: {issue.title}
+            {issue._id}: {issue?.title}
           </DialogTitle>
           <DialogDescription>Issue details and management</DialogDescription>
         </DialogHeader>
-
         <div className="space-y-6">
           <div>
             <Label htmlFor="description">Description</Label>
@@ -43,7 +42,7 @@ export function IssueDialog({ issue, moveIssue, statuses }: IssueDialogProps) {
               <Label>Status</Label>
               <Select
                 value={issue.status}
-                onValueChange={(value) => moveIssue(issue.id, value as Status)}
+                onValueChange={(value) => moveIssue(issue._id, value as Status)}
               >
                 <SelectTrigger className="mt-1">
                   <SelectValue />
@@ -59,7 +58,7 @@ export function IssueDialog({ issue, moveIssue, statuses }: IssueDialogProps) {
             </div>
             <div>
               <Label>Story Points</Label>
-              <div className="mt-1 p-2 border rounded">{issue.storyPoints}</div>
+              <div className="mt-1 p-2 border rounded">{issue?.storyPoints}</div>
             </div>
           </div>
 
@@ -71,7 +70,7 @@ export function IssueDialog({ issue, moveIssue, statuses }: IssueDialogProps) {
                   <AvatarImage src={issue.assignee.avatar} />
                   <AvatarFallback className="text-xs">{issue.assignee.initials}</AvatarFallback>
                 </Avatar>
-                <span>{issue.assignee.name}</span>
+                <span>{issue?.assignee.username}</span>
               </div>
             </div>
             <div>
